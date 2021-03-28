@@ -11,7 +11,7 @@ module.exports = {
   devtool: 'eval-source-map',
   devServer: {
     contentBase: './dist'
-},
+  },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
@@ -23,18 +23,40 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(gif|png|jpe?g)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/images/'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(mp3|wav|wma|ogg)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'assets/audio/',
+            publicPath: 'assets/audio/'
+          }
+        }
+      },
+      {
+        test:/\.html$/,
+        use: [
+          'html-loader'
+        ]
+      },
+      {
         test: /\.css$/,
         use: [
           'style-loader',
           'css-loader'
         ]
-      },
-      {
-        test: /\.mp3$/,
-        loader: 'file-loader',
-        query: {
-          name: 'static/media/[name].[hash:8].[ext]'
-        }
       },
       {
         test: /\.js$/,
