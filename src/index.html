@@ -8,14 +8,18 @@
     <h1>Public Space Simulator</h1>
   </div>
   <div class="container">
-    <div id="audioSlider"></div>
     <audio>
       <source src="assets/audio/restaurant.mp3" type="audio/mp3" id="audio1"></source>
       Your browser does not support the audio element.
     </audio>
-    <button class="btn-success" id="submit">Play me</button>
+    <button class="btn-success" id="play">Play me</button>
     <button class="btn-success" id="pause">Pause</button>
-
+    <br>
+    <button class="btn-success" id="playbell">Play me</button>
+    <button class="btn-success" id="pausebell">Pause</button>
+    <div class="slidecontainer">
+      <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+    </div>
   </div>
 </body>
 </html>

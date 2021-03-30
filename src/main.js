@@ -3,18 +3,19 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import './assets/audio/restaurant.mp3';
-//import testMp3 from "assets/audio/restaurant.mp3";
+import './assets/audio/bell.mp3';
 let song = new Audio("assets/audio/restaurant.mp3");
-//let filename = "restaurant";
+let bell = new Audio("assets/audio/bell.mp3");
 
-$("#submit").click(function(event) {
+$("#play").click(function(event) {
   event.preventDefault();
   
   song.volume = 0.5;
   //$('audio#audio1')[0].play();
   //restaurant.loop = true;
-  //restaurant.currentTime = 0;
+  //restaurant.currentTime = 0;a
   song.play();
+  
 //   restaurant.pause();
 });
 $("#pause").click(function(event) {
@@ -22,15 +23,11 @@ $("#pause").click(function(event) {
   song.pause();
 });
 
-// $('#audioSlider').slider({
-//     orientation: "vertical",
-//     value: audio1.volume,
-//     min: 0,
-//     max: 1,
-//     range: 'min',
-//     animate: true,
-//     step: .1,
-//     slide: function(e, ui) {
-//     audio1.volume = ui.value;
-//     }
-// });
+$("#playbell").click(function(event) {
+  event.preventDefault();
+  bell.play();
+});
+$("#pausebell").click(function(event) {
+  event.preventDefault();
+  bell.pause();
+});
