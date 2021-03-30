@@ -9,14 +9,10 @@ let bell = new Audio("assets/audio/bell.mp3");
 
 $("#play").click(function(event) {
   event.preventDefault();
-  
   song.volume = 0.5;
-  //$('audio#audio1')[0].play();
-  //restaurant.loop = true;
-  //restaurant.currentTime = 0;a
   song.play();
-  
-//   restaurant.pause();
+  song.loop = true;
+  bell.currentTime = 0;
 });
 $("#pause").click(function(event) {
   event.preventDefault();
@@ -26,6 +22,8 @@ $("#pause").click(function(event) {
 $("#playbell").click(function(event) {
   event.preventDefault();
   bell.play();
+  bell.loop = true;
+  bell.currentTime = 0;
 });
 $("#pausebell").click(function(event) {
   event.preventDefault();
