@@ -7,6 +7,8 @@ import './assets/audio/bell.mp3';
 let song = new Audio("assets/audio/restaurant.mp3");
 let bell = new Audio("assets/audio/bell.mp3");
 
+const audioContext = new AudioContext();
+
 $("#play").click(function(event) {
   event.preventDefault();
   song.volume = 0.5;
