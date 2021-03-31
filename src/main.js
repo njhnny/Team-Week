@@ -48,7 +48,7 @@ const track = audioContext.createMediaElementSource(audioElement);
 track.connect(audioContext.destination);
 
 // select our play button
-const playButton = document.querySelector('button');
+const playButton = document.querySelector('button#api');
 
 playButton.addEventListener('click', function() {
 
@@ -81,3 +81,14 @@ const volumeControl = document.querySelector('#volume');
 volumeControl.addEventListener('input', function() {
   gainNode.gain.value = this.value;
 }, false);
+
+const pannerOptions = { pan: 0 };
+const panner = new StereoPannerNode(audioContext, pannerOptions);
+
+const pannerControl = document.querySelector('#panner');
+
+pannerControl.addEventListener('input', function() {
+  panner.pan.value = this.value;
+}, false);
+
+track.connect(gainNode).connect(panner).connect(audioContext.destination);
