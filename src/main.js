@@ -71,3 +71,13 @@ playButton.addEventListener('click', function() {
 audioElement.addEventListener('ended', () => {
   playButton.dataset.playing = 'false';
 }, false);
+
+const gainNode = audioContext.createGain();
+
+track.connect(gainNode).connect(audioContext.destination);
+
+const volumeControl = document.querySelector('#volume');
+
+volumeControl.addEventListener('input', function() {
+  gainNode.gain.value = this.value;
+}, false);
