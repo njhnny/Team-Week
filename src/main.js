@@ -111,3 +111,47 @@ listener.forwardZ.value = -1;
 listener.upX.value = 0;
 listener.upY.value = 1;
 listener.upZ.value = 0;
+
+//HRTF stands for head-related transfer function
+const pannerModel = 'HRTF';
+
+const innerCone = 60;
+const outerCone = 90;
+const outerGain = 0.3;
+
+const distanceModel = 'linear';
+
+//maximum distance between source and listener. 10000 is the default
+const maxDistance = 10000;
+
+const refDistance = 1;
+
+//sets how quickly volume reduces as panner moves away from listener
+const rolloff = 10;
+
+//set orientation of sound source
+const positionX = posX;
+const positionY = posY;
+const positionZ = posZ;
+
+const orientationX = 0.0;
+const orientationY = 0.0;
+const orientationZ = -1.0;
+
+//use constructor to create panner node and pass in parameters above
+const panner = new PannerNode(audioCtx, {
+  panningModel: pannerModel,
+  distanceModel: distanceModel,
+  positionX: positionX,
+  positionY: positionY,
+  positionZ: positionZ,
+  orientationX: orientationX,
+  orientationY: orientationY,
+  orientationZ: orientationZ,
+  refDistance: refDistance,
+  maxDistance: maxDistance,
+  rolloffFactor: rollOff,
+  coneInnerAngle: innerCone,
+  coneOuterAngle: outerCone,
+  coneOuterGain: outerGain
+})
