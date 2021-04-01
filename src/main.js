@@ -74,8 +74,6 @@ audioElement.addEventListener('ended', () => {
 
 const gainNode = audioContext.createGain();
 
-track.connect(gainNode).connect(audioContext.destination);
-
 const volumeControl = document.querySelector('#volume');
 
 volumeControl.addEventListener('input', function() {
@@ -92,3 +90,24 @@ pannerControl.addEventListener('input', function() {
 }, false);
 
 track.connect(gainNode).connect(panner).connect(audioContext.destination);
+
+//Spacialization
+const audioCtx = new AudioContext();
+const listener = audioCtx.listener;
+
+//listener's position set to emulate someone looking into a room
+const posX = window.innerWidth/2;
+const posY = window.innerHeight/2;
+const posZ = 300;
+
+listener.positionX.value = posX;
+listener.positionY.value = posY;
+listener.positionZ.value = posZ-5;
+
+//these values set the listener's location as centered in the image and slightly in front of the sound source
+listener.forwardX.value = 0;
+listener.forwardY.value = 0;
+listener.forwardZ.value = -1;
+listener.upX.value = 0;
+listener.upY.value = 1;
+listener.upZ.value = 0;
