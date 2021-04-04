@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import './assets/audio/restaurant.mp3';
 import './assets/audio/bell.mp3';
+import 'vrview.js';
 let song = new Audio("assets/audio/restaurant.mp3");
 let bell = new Audio("assets/audio/bell.mp3");
 
@@ -35,7 +36,10 @@ window.addEventListener('load', onVrViewLoad);
 function onVrViewLoad() {
   // Selector '#vrview' finds element with id 'vrview'.
   var vrView = new VRView.Player('#vrview', {
-    video: '/url/to/video.mp4',
-    is_stereo: true
+    image: 'assets/images/bluffs360.jpg',
+    is_stereo: false,
+    width: "100%",
+    height: "100%"
   });
 }
+
