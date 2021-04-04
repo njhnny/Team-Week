@@ -1,35 +1,11 @@
-import $ from 'jquery';
+//import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import './assets/audio/restaurant.mp3';
 import './assets/audio/bell.mp3';
-let song = new Audio("assets/audio/restaurant.mp3");
-let bell = new Audio("assets/audio/bell.mp3");
-
-
-$("#play").click(function(event) {
-  event.preventDefault();
-  song.volume = 0.5;
-  song.play();
-  song.loop = true;
-  bell.currentTime = 0;
-});
-$("#pause").click(function(event) {
-  event.preventDefault();
-  song.pause();
-});
-
-$("#playbell").click(function(event) {
-  event.preventDefault();
-  bell.play();
-  bell.loop = true;
-  bell.currentTime = 0;
-});
-$("#pausebell").click(function(event) {
-  event.preventDefault();
-  bell.pause();
-});
+import './assets/audio/forest1.mp3';
+import './assets/audio/forest1.ogg';
 
 
 // Below here, experimenting with Web-Audio-API
@@ -91,67 +67,67 @@ pannerControl.addEventListener('input', function() {
 
 track.connect(gainNode).connect(panner).connect(audioContext.destination);
 
-//Spacialization
-const audioCtx = new AudioContext();
-const listener = audioCtx.listener;
+// //Spacialization
+// const audioCtx = new AudioContext();
+// const listener = audioCtx.listener;
 
-//listener's position set to emulate someone looking into a room
-const posX = window.innerWidth/2;
-const posY = window.innerHeight/2;
-const posZ = 300;
+// //listener's position set to emulate someone looking into a room
+// const posX = window.innerWidth/2;
+// const posY = window.innerHeight/2;
+// const posZ = 300;
 
-listener.positionX.value = posX;
-listener.positionY.value = posY;
-listener.positionZ.value = posZ-5;
+// listener.positionX.value = posX;
+// listener.positionY.value = posY;
+// listener.positionZ.value = posZ-5;
 
-//these values set the listener's location as centered in the image and slightly in front of the sound source
-listener.forwardX.value = 0;
-listener.forwardY.value = 0;
-listener.forwardZ.value = -1;
-listener.upX.value = 0;
-listener.upY.value = 1;
-listener.upZ.value = 0;
+// //these values set the listener's location as centered in the image and slightly in front of the sound source
+// listener.forwardX.value = 0;
+// listener.forwardY.value = 0;
+// listener.forwardZ.value = -1;
+// listener.upX.value = 0;
+// listener.upY.value = 1;
+// listener.upZ.value = 0;
 
-//HRTF stands for head-related transfer function
-const pannerModel = 'HRTF';
+// //HRTF stands for head-related transfer function
+// const pannerModel = 'HRTF';
 
-const innerCone = 60;
-const outerCone = 90;
-const outerGain = 0.3;
+// const innerCone = 60;
+// const outerCone = 90;
+// const outerGain = 0.3;
 
-const distanceModel = 'linear';
+// const distanceModel = 'linear';
 
-//maximum distance between source and listener. 10000 is the default
-const maxDistance = 10000;
+// //maximum distance between source and listener. 10000 is the default
+// const maxDistance = 10000;
 
-const refDistance = 1;
+// const refDistance = 1;
 
-//sets how quickly volume reduces as panner moves away from listener
-const rolloff = 10;
+// //sets how quickly volume reduces as panner moves away from listener
+// const rolloff = 10;
 
-//set orientation of sound source
-const positionX = posX;
-const positionY = posY;
-const positionZ = posZ;
+// //set orientation of sound source
+// const positionX = posX;
+// const positionY = posY;
+// const positionZ = posZ;
 
-const orientationX = 0.0;
-const orientationY = 0.0;
-const orientationZ = -1.0;
+// const orientationX = 0.0;
+// const orientationY = 0.0;
+// const orientationZ = -1.0;
 
 //use constructor to create panner node and pass in parameters above
-const panner = new PannerNode(audioCtx, {
-  panningModel: pannerModel,
-  distanceModel: distanceModel,
-  positionX: positionX,
-  positionY: positionY,
-  positionZ: positionZ,
-  orientationX: orientationX,
-  orientationY: orientationY,
-  orientationZ: orientationZ,
-  refDistance: refDistance,
-  maxDistance: maxDistance,
-  rolloffFactor: rollOff,
-  coneInnerAngle: innerCone,
-  coneOuterAngle: outerCone,
-  coneOuterGain: outerGain
-})
+// const panner = new PannerNode(audioCtx, {
+//   panningModel: pannerModel,
+//   distanceModel: distanceModel,
+//   positionX: positionX,
+//   positionY: positionY,
+//   positionZ: positionZ,
+//   orientationX: orientationX,
+//   orientationY: orientationY,
+//   orientationZ: orientationZ,
+//   refDistance: refDistance,
+//   maxDistance: maxDistance,
+//   rolloffFactor: rollOff,
+//   coneInnerAngle: innerCone,
+//   coneOuterAngle: outerCone,
+//   coneOuterGain: outerGain
+// })

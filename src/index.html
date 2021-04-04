@@ -13,7 +13,15 @@
       Your browser does not support the audio element.
     </audio>
     <audio src="assets/audio/restaurant.mp3"></audio>
-    <button data-playing="false" role="switch" aria-checked="false" id="api">
+    <button data-playing="false" role="switch" aria-checked="false" id="api" class="play-sound">
+      <span>Play/Pause</span>
+    </button>
+    <audio src="assets/audio/forest1.mp3"></audio>
+    <button data-playing="false" role="switch" aria-checked="false" id="forest-mp3" class="play-sound">
+      <span>Play/Pause</span>
+    </button>
+    <audio src="assets/audio/forest1.ogg"></audio>
+    <button data-playing="false" role="switch" aria-checked="false" id="forest-ogg" class="play-sound">
       <span>Play/Pause</span>
     </button>
     <br>
@@ -23,14 +31,7 @@
     <label for="panner">Pan</label>
     <input type="range" id="panner" min="-3" max="3" value="0" step="0.01">
     <br>
-    <button class="btn-success" id="play">Play me</button>
-    <button class="btn-success" id="pause">Pause</button>
-    <br>
-    <button class="btn-success" id="playbell">Play me</button>
-    <button class="btn-success" id="pausebell">Pause</button>
-    <div class="slidecontainer">
-      <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-    </div>
+    
   </div>
 </body>
 </html>
