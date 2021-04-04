@@ -8,12 +8,22 @@
     <h1>Public Space Simulator</h1>
   </div>
   <div class="container">
+    <div class="controls"></div>
     <audio>
       <source src="assets/audio/restaurant.mp3" type="audio/mp3" id="audio1"></source>
       Your browser does not support the audio element.
     </audio>
     <audio src="assets/audio/restaurant.mp3"></audio>
-    <button data-playing="false" role="switch" aria-checked="false" id="api">
+    <button data-playing="false" role="switch" aria-checked="false" id="api" class="play-sound">
+      <span>Play/Pause</span>
+    </button>
+    <audio src="assets/audio/forest1.mp3"></audio>
+    <button data-playing="false" role="switch" aria-checked="false" id="forest-mp3" class="play-sound">
+      <span>Play/Pause</span>
+    </button>
+    <audio src="assets/audio/forest1.ogg"></audio>
+    
+    <button data-playing="false" role="switch" aria-checked="false" id="forest-ogg" class="play-sound">
       <span>Play/Pause</span>
     </button>
     <br>
@@ -22,18 +32,15 @@
     <br>
     <label for="panner">Pan</label>
     <input type="range" id="panner" min="-3" max="3" value="0" step="0.01">
-    <br>
-    <button class="btn-success" id="play">Play me</button>
-    <button class="btn-success" id="pause">Pause</button>
-    <br>
-    <button class="btn-success" id="playbell">Play me</button>
-    <button class="btn-success" id="pausebell">Pause</button>
-    <div class="slidecontainer">
-      <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-    </div>
   </div>
-  <div id='vrview'></div>
-  <script src="https://storage.googleapis.com/vrview/2.0/build/vrview.min.js"></script>
+    <br>
+    
+    <script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>
+    <a-scene >
+      <a-sky id="360" src="assets/images/bluffs360.jpg" rotation="0 -150 0"></a-sky>
+    </a-scene>
+  </div>
+  
   <div class="container">
     <h2>Forest Sounds</h2>
     <button class="btn btn-primary" id="play-forest-ogg">Hear Birds</button>

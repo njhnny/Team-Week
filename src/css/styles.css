@@ -6,3 +6,17 @@ img {
   width: 25%;
   height: auto;
 }
+
+#360 {
+  z-index: -1;
+  
+ 
+}
+.controls {
+  z-index: 5;
+}
+
+.container {
+  z-index: 1;
+  position: relative;
+}
