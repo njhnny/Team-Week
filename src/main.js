@@ -2,10 +2,12 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-import './assets/audio/mp3/restaurant.mp3';
-import './assets/audio/mp3/bell.mp3';
-import './assets/audio/mp3/forest1.mp3';
-import './assets/audio/ogg/forest1.ogg';
+import './assets/audio/restaurant.mp3';
+import './assets/audio/bell.mp3';
+import './assets/audio/forest1.mp3';
+import './assets/audio/forest1.ogg';
+import './assets/images/bluffs360.jpg';
+
 
 
 // Below here, experimenting with Web-Audio-API
@@ -67,6 +69,18 @@ pannerControl.addEventListener('input', function() {
 
 track.connect(gainNode).connect(panner).connect(audioContext.destination);
 
+//window.addEventListener('load', onVrViewLoad);
+
+// function onVrViewLoad() {
+//   // Selector '#vrview' finds element with id 'vrview'.
+//   var vrView = new VRView.Player('#vrview', {
+//     image: 'assets/images/bluffs360.jpg',
+//     is_stereo: false,
+//     width: "100%",
+//     height: "100%"
+//   });
+// }
+// $.getScript('https://storage.googleapis.com/vrview/2.0/build/vrview.min.js');
 // //Spacialization
 // const audioCtx = new AudioContext();
 // const listener = audioCtx.listener;
