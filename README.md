@@ -38,6 +38,19 @@
 * _Any known issues_
 * _should go here_
 
+## Sound Attribution
+
+This project uses these sounds from freesound.org - 
+
+
+| Name | Creator | URL | Licensing |  
+| :------------- | :----------: | :-----------: |  ------------: |
+| Outside ambiance with birds | Ryntjie | https://freesound.org/s/365041/ | Attribution Noncommercial |
+| Small Crowd pre-concert talking party bar walla talking | JohnsonBrandEditing | https://freesound.org/s/243373/ | Creative Commons 0 |
+|Passing Intercity train with a persistant Robin | plantmonkey | https://freesound.org/s/381221/ | Attribution Noncommercial |
+|river spring birds NL 02 190407_1332.wav | klankbeeld | https://freesound.org/s/566143/ | Attribution |
+| estate February NL Haanwijk 130217_00.flac | klankbeeld | https://freesound.org/s/178374/ | Attribution  |
+
 ## License
 
 _[MIT](https://choosealicense.com/licenses/mit/)_
