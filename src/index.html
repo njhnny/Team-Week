@@ -9,16 +9,23 @@
   </div>
   <div class="container">
     <div class="controls"></div>
-    <audio>
-      <source src="assets/audio/restaurant.mp3" type="audio/mp3" id="audio1"></source>
+    <audio id="audio-birds">
+      <source src="assets/audio/birds.mp3" type="audio/mp3"></source>
       Your browser does not support the audio element.
     </audio>
-    <audio src="assets/audio/mp3/restaurant.mp3"></audio>
-    <button data-playing="false" role="switch" aria-checked="false" id="api" class="play-sound">
+    <button data-playing="false" role="switch" aria-checked="false" id="birds-button" class="play-sound">
       <span>Play/Pause</span>
     </button>
-    <audio src="assets/audio/mp3/forest1.mp3"></audio>
-    <button data-playing="false" role="switch" aria-checked="false" id="forest-mp3" class="play-sound">
+    <audio id="audio-people">
+      <source src="assets/audio/people.mp3" type="audio/mp3"></source>
+      Your browser does not support the audio element.
+    </audio>
+  
+    <!-- <audio> 
+      <source src="assets/audio/mp3/birds.mp3" id="birds-src" type="audio/mp3"></source>
+      Your browser does not support the audio element.
+    </audio> -->
+    <button data-playing="false" role="switch" aria-checked="false" id="people-button" class="play-sound">
       <span>Play/Pause</span>
     </button>
     <audio src="assets/audio/forest1.ogg"></audio>
