@@ -78,6 +78,7 @@ birdsAudioElement.addEventListener('ended', () => {
 }, false);
 
 const birdsGainNode = audioContext.createGain();
+// const peopleGainNode = audioContext.createGain()
 
 const birdsVolumeControl = document.querySelector('#volume');
 
@@ -94,6 +95,7 @@ pannerControl.addEventListener('input', function() {
   panner.pan.value = this.value;
 }, false);
 
+peopleTrack.connect(birdsGainNode).connect(panner).connect(audioContext.destination);
 birdsTrack.connect(birdsGainNode).connect(panner).connect(audioContext.destination);
 /*
 
