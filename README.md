@@ -55,7 +55,7 @@ This project uses these sounds from freesound.org -
 
 _[MIT](https://choosealicense.com/licenses/mit/)_
 
-Copyright (c) 2021 HR Williams, Nick Hennessy, Tyler Sinks, Garret Brown
+Copyright (c) 2021 HR Williams, Nick Hennessy, Tyler Sinks, Garrett Brown
 
 ## Contact Information
 
