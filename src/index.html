@@ -2,6 +2,22 @@
 <html lang="en-US">
 <head>
   <title>Public Space Simulator</title>
+  <script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-event-set-component@5/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-template-component@3.2.1/dist/aframe-template-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>
+
+    script id="link" type="text/html">
+      <a-entity class="link"
+        geometry="primitive: plane; height: 1; width: 1"
+        material="shader: flat; src: ${thumb}"
+        event-set__mouseenter="scale: 1.2 1.2 1"
+        event-set__mouseleave="scale: 1 1 1"
+        event-set__click="_target: #image-360; _delay: 300; material.src: ${src}"
+        proxy-event="event: click; to: #image-360; as: fade"
+        sound="on: click; src: #audio1"></a-entity>
+    </script>
 </head>
 <body>
   <div class="jumbotron">
@@ -35,13 +51,23 @@
   </div>
     <br>
     
-    <script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>
-    <a-scene >
+    <a-scene>
+      <a-assets>
+        <img id="texture" src="assets/images/boom.jpeg">
+        <audio id="noise" src="assets/audio/bell.mp3"></audio>
+      </a-assets>
       <a-sky id="360" src="assets/images/bluffs360.jpg" rotation="0 -150 0"></a-sky>
       
-      <a-sphere color="grey" light="type: directional; color: #FFF; intensity: 1" ></a-sphere>
+      
+      <a-box id="api2" material="src: #texture" rotation= "90 130 90" light="directional" sound="on: click; src: #click-sound"></a-box>
     
+      
+      
+      
+      
+      
     </a-scene>
+    
   </div>
   
   <div class="container">

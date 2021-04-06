@@ -1,4 +1,5 @@
 //import $ from 'jquery';
+// require('aframe');
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
@@ -7,7 +8,6 @@ import './assets/audio/bell.mp3';
 import './assets/audio/forest1.mp3';
 import './assets/audio/forest1.ogg';
 import './assets/images/bluffs360.jpg';
-
 
 
 // Below here, experimenting with Web-Audio-API
@@ -26,7 +26,7 @@ const track = audioContext.createMediaElementSource(audioElement);
 track.connect(audioContext.destination);
 
 // select our play button
-const playButton = document.querySelector('button#api');
+const playButton = document.querySelector('#api');
 
 playButton.addEventListener('click', function() {
 
