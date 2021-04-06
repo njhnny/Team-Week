@@ -2,10 +2,14 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-import './assets/audio/mp3/restaurant.mp3';
-import './assets/audio/mp3/bell.mp3';
 import './assets/audio/mp3/forest1.mp3';
 import './assets/audio/ogg/forest1.ogg';
+import './assets/audio/mp3/bell.mp3';
+import './assets/audio/mp3/birds.mp3';
+import './assets/audio/mp3/people.mp3';
+import './assets/audio/mp3/restaurant.mp3';
+import './assets/audio/ogg/birds.ogg';
+import './assets/audio/ogg/people.ogg';
 import './assets/images/bluffs360.jpg';
 
 const splash = document.querySelector('.splash');
@@ -16,25 +20,27 @@ document.addEventListener('DOMContentLoaded', (e)=>{
   }, 2000);
 });
 
-// Below here, experimenting with Web-Audio-API
-
 // for legacy browsers
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 
 const audioContext = new AudioContext();
 
-// get the audio element
-const audioElement = document.querySelector('audio');
+// get the audio elements
+const birdsAudioElement = document.querySelector('audio#audio-birds');
+const peopleAudioElement = document.querySelector('audio#audio-people');
 
 // pass it into the audio context
-const track = audioContext.createMediaElementSource(audioElement);
+const birdsTrack = audioContext.createMediaElementSource(birdsAudioElement);
+const peopleTrack = audioContext.createMediaElementSource(peopleAudioElement);
 
-track.connect(audioContext.destination);
+birdsTrack.connect(audioContext.destination);
+peopleTrack.connect(audioContext.destination);
 
 // select our play button
-const playButton = document.querySelector('button#api');
+const birdsPlayButton = document.querySelector('button#birds-button');
+const peoplePlayButton = document.querySelector('button#people-button');
 
-playButton.addEventListener('click', function() {
+birdsPlayButton.addEventListener('click', function() {
 
   // check if context is in suspended state (autoplay policy)
   if (audioContext.state === 'suspended') {
@@ -43,25 +49,47 @@ playButton.addEventListener('click', function() {
 
   // play or pause track depending on state
   if (this.dataset.playing === 'false') {
-    audioElement.play();
+    birdsAudioElement.play();
     this.dataset.playing = 'true';
   } else if (this.dataset.playing === 'true') {
-    audioElement.pause();
+    birdsAudioElement.pause();
     this.dataset.playing = 'false';
   }
 
 }, false);
 
-audioElement.addEventListener('ended', () => {
-  playButton.dataset.playing = 'false';
+peoplePlayButton.addEventListener('click', function() {
+
+  // check if context is in suspended state (autoplay policy)
+  if (audioContext.state === 'suspended') {
+    audioContext.resume();
+  }
+
+  // play or pause track depending on state
+  if (this.dataset.playing === 'false') {
+    peopleAudioElement.play();
+    this.dataset.playing = 'true';
+  } else if (this.dataset.playing === 'true') {
+    peopleAudioElement.pause();
+    this.dataset.playing = 'false';
+  }
+
 }, false);
 
-const gainNode = audioContext.createGain();
+birdsAudioElement.addEventListener('ended', () => {
+  birdsPlayButton.dataset.playing = 'false';
+  peoplePlayButton.dataset.playing = 'false';
+  // bellPlayButton.dataset.playing = 'false';
+  // forest1PlayButton.dataset.playing = 'false';
+}, false);
 
-const volumeControl = document.querySelector('#volume');
+const birdsGainNode = audioContext.createGain();
+// const peopleGainNode = audioContext.createGain()
 
-volumeControl.addEventListener('input', function() {
-  gainNode.gain.value = this.value;
+const birdsVolumeControl = document.querySelector('#volume');
+
+birdsVolumeControl.addEventListener('input', function() {
+  birdsGainNode.gain.value = this.value;
 }, false);
 
 const pannerOptions = { pan: 0 };
@@ -73,7 +101,69 @@ pannerControl.addEventListener('input', function() {
   panner.pan.value = this.value;
 }, false);
 
-track.connect(gainNode).connect(panner).connect(audioContext.destination);
+peopleTrack.connect(birdsGainNode).connect(panner).connect(audioContext.destination);
+birdsTrack.connect(birdsGainNode).connect(panner).connect(audioContext.destination);
+/*
+
+bell.mp3
+
+*/
+
+// const forestAudioContext = new AudioContext();
+
+// // get the audio element
+// const forestAudioElement = document.querySelector('audio#forest1mp3-src');
+
+// // pass it into the audio context
+// const forestTrack = forestAudioContext.createMediaElementSource(forestAudioElement);
+
+// forestTrack.connect(forestAudioContext.destination);
+
+// // select our play button
+// const forestPlayButton = document.querySelector('button#forest-mp3');
+
+// forestPlayButton.addEventListener('click', function() {
+
+//   // check if context is in suspended state (autoplay policy)
+//   if (forestAudioContext.state === 'suspended') {
+//     forestAudioContext.resume();
+//   }
+
+//   // play or pause track depending on state
+//   if (this.dataset.playing === 'false') {
+//     forestAudioElement.play();
+//     this.dataset.playing = 'true';
+//   } else if (this.dataset.playing === 'true') {
+//     forestAudioElement.pause();
+//     this.dataset.playing = 'false';
+//   }
+
+// }, false);
+
+// forestAudioElement.addEventListener('ended', () => {
+//   forestPlayButton.dataset.playing = 'false';
+// }, false);
+
+// const forestGainNode = audioContext.createGain();
+
+// const forestVolumeControl = document.querySelector('#volume');
+
+// forestVolumeControl.addEventListener('input', function() {
+//   forestGainNode.gain.value = this.value;
+// }, false);
+
+// const forestPannerOptions = { pan: 0 };
+// const forestPanner = new StereoPannerNode(forestAudioContext, forestPannerOptions);
+
+// const forestPannerControl = document.querySelector('#panner');
+
+// forestPannerControl.addEventListener('input', function() {
+//   forestPanner.pan.value = this.value;
+// }, false);
+
+// forestTrack.connect(gainNode).connect(panner).connect(audioContext.destination);
+
+// forestTrack.connect(forestAudioContext.destination);
 
 //window.addEventListener('load', onVrViewLoad);
 
