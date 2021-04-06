@@ -2,18 +2,24 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
+import './assets/audio/mp3/forest1.mp3';
+import './assets/audio/ogg/forest1.ogg';
 import './assets/audio/mp3/bell.mp3';
 import './assets/audio/mp3/birds.mp3';
-import './assets/audio/mp3/forest1.mp3';
 import './assets/audio/mp3/people.mp3';
 import './assets/audio/mp3/restaurant.mp3';
-import './assets/audio/ogg/forest1.ogg';
 import './assets/audio/ogg/birds.ogg';
 import './assets/audio/ogg/people.ogg';
 import './assets/images/bluffs360.jpg';
 
+const splash = document.querySelector('.splash');
 
-// This one only allows for restaurant.mp3 functionality:
+document.addEventListener('DOMContentLoaded', (e)=>{
+  setTimeout(()=>{
+    splash.classList.add('display-none');
+  }, 2000);
+});
+
 // for legacy browsers
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 
