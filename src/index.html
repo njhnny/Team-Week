@@ -2,46 +2,33 @@
 <html lang="en-US">
 <head>
   <title>Public Space Simulator</title>
-  <script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>
-  <script src="https://unpkg.com/aframe-event-set-component@5/dist/aframe-event-set-component.min.js"></script>
-    <script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script>
-    <script src="https://unpkg.com/aframe-template-component@3.2.1/dist/aframe-template-component.min.js"></script>
-    <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>
-
-    script id="link" type="text/html">
-      <a-entity class="link"
-        geometry="primitive: plane; height: 1; width: 1"
-        material="shader: flat; src: ${thumb}"
-        event-set__mouseenter="scale: 1.2 1.2 1"
-        event-set__mouseleave="scale: 1 1 1"
-        event-set__click="_target: #image-360; _delay: 300; material.src: ${src}"
-        proxy-event="event: click; to: #image-360; as: fade"
-        sound="on: click; src: #audio1"></a-entity>
-    </script>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+  <script src="https://unpkg.com/aframe-play-sound-on-event@1.0.2/dist/aframe-play-sound-on-event.min.js"></script>
 </head>
 <body>
-  <div class="jumbotron">
-    <h1>Public Space Simulator</h1>
+  <div class="splash">
+    <h1 class="fadeIn">An Evening at The Bluffs</h1>
+    <p class="fadeIn"><i>An immersive audio-visual experience</i></p>
+    <p class="fadeIn">Created by: HR Williams, Nick Hennessy, Tyler Sinks, Garrett Brown</p>
   </div>
-  <div class="container">
-    <div class="controls"></div>
-    <audio>
-      <source src="assets/audio/restaurant.mp3" type="audio/mp3" id="audio1"></source>
+  <div class="container" id="box">
+    <h2>toggle sounds</h2>
+    <audio id="audio-birds">
+      <source src="assets/audio/birds.mp3" type="audio/mp3"></source>
       Your browser does not support the audio element.
     </audio>
-    <audio src="assets/audio/restaurant.mp3"></audio>
-    <button data-playing="false" role="switch" aria-checked="false" id="api" class="play-sound">
-      <span>Play/Pause</span>
+    <button data-playing="false" role="switch" aria-checked="false" id="birds-button" class="play-sound btn btn-primary">
+      <span>birds</span>
     </button>
-    <audio src="assets/audio/forest1.mp3"></audio>
-    <button data-playing="false" role="switch" aria-checked="false" id="forest-mp3" class="play-sound">
-      <span>Play/Pause</span>
+    <audio id="audio-people">
+      <source src="assets/audio/people.mp3" type="audio/mp3"></source>
+      Your browser does not support the audio element.
+    </audio>
+    <button data-playing="false" role="switch" aria-checked="false" id="people-button" class="play-sound btn btn-primary">
+      <span>chatter</span>
     </button>
     <audio src="assets/audio/forest1.ogg"></audio>
-    
-    <button data-playing="false" role="switch" aria-checked="false" id="forest-ogg" class="play-sound">
-      <span>Play/Pause</span>
-    </button>
     <br>
     <label for="volume">Volume</label>
     <input type="range" id="volume" min="0" max="2" value="1" step="0.01">
@@ -49,34 +36,30 @@
     <label for="panner">Pan</label>
     <input type="range" id="panner" min="-3" max="3" value="0" step="0.01">
   </div>
-    <br>
+  <a-scene>
+    <a-assets>
+      <img id="texture" src="assets/images/boom.jpeg">
+      <audio id="noise"  src="assets/audio/birds.mp3" preload="auto"></audio>
+      <audio id="bark"  src="assets/audio/bark.mp3" preload="auto"></audio>
+      <!-- <a-asset-item response-type="arraybuffer" id="noise" crossorigin="anonymous" src="assets/audio/assets/audio/birds.mp3"></a-asset-item> -->
+    </a-assets>
     
-    <a-scene>
-      <a-assets>
-        <img id="texture" src="assets/images/boom.jpeg">
-        <audio id="noise" src="assets/audio/bell.mp3"></audio>
-      </a-assets>
-      <a-sky id="360" src="assets/images/bluffs360.jpg" rotation="0 -150 0"></a-sky>
-      
-      
-      <a-box id="api2" material="src: #texture" rotation= "90 130 90" light="directional" sound="on: click; src: #click-sound"></a-box>
-    
-      
-      
-      
-      
-      
-    </a-scene>
-    
-  </div>
-  
-  <div class="container">
-    <h2>Forest Sounds</h2>
-    <button class="btn btn-primary" id="play-forest-ogg">Hear Birds</button>
-    <button class="btn btn-primary" id="pause-forest-ogg">Pause Birds</button>
-    <button class="btn btn-primary" id="play-forest-mp3">Hear Same Birds</button>
-    <button class="btn btn-primary" id="pause-forest-mp3">Pause Same Birds</button>
-  </div>
-</body>
+    <a-sky id="360" src="assets/images/bluffs360.jpg" rotation="0 -150 0"></a-sky>
+    <a-entity position="0 0 7">
+      <a-camera>
+        <a-cursor></a-cursor>
+      </a-camera>
+    </a-entity>
+    <a-box color="#0088FF" rotation= "90 130 90" sound="src: #noise"
+    play-sound-on-event="mode: toggle-stop; event: click" event-set__enter="_event: mouseenter; color: #8FF7FF"
+    event-set__leave="_event: mouseleave; color: #4CC3D9"></a-box>
+    <a-entity geometry="primitive: sphere; radius: 1"
+          
+          color="green"
+          material="opacity: 0.2; transparent: true"
+          position="3 -1.3 -4" sound="src: #bark"
+          play-sound-on-event="mode: toggle-stop; event: mouseenter" event-set__enter="_event: mouseenter; color: #8FF7FF"
+          event-set__leave="_event: mouseleave; color: #4CC3D9"></a-entity>
+  </a-scene>
+<script type="text/javascript" src="bundle.js"></script></body>
 </html>
-
