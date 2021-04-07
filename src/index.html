@@ -1,9 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en-US">
-  
   <head>
     <meta charset="UTF-8">
     <title>Public Space Simulator</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-play-sound-on-event@1.0.2/dist/aframe-play-sound-on-event.min.js"></script>
   </head>
   <!-- <body>
     <div class="splash">
@@ -49,9 +52,59 @@
       </div> -->
     </div>
     <script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>
-    <a-scene >
-      <a-sky id="360" src="assets/images/bluffs360.jpg" rotation="0 -150 0"></a-sky>
-    </a-scene>
+    <a-scene>
+    <a-assets>
+      <img id="texture" src="assets/images/boom.jpeg">
+      <audio id="train"  src="assets/audio/train23.mp3" preload="auto"></audio>
+      <audio id="bark"  src="assets/audio/bark.mp3" preload="auto"></audio>
+      <audio id="flute" src="assets/audio/flute4.mp3" preload="auto"></audio>
+      <audio id="swings" src="assets/audio/swings7.mp3" preload="auto"></audio>
+      <audio id="bike"  src="assets/audio/bike4.mp3" preload="auto"></audio>
+      <!-- <a-asset-item response-type="arraybuffer" id="noise" crossorigin="anonymous" src="assets/audio/assets/audio/birds.mp3"></a-asset-item> -->
+    </a-assets>
+    
+    <a-sky id="360" src="assets/images/bluffs360.jpg" rotation="0 -150 0"></a-sky>
+    <a-entity position="0 0 7">
+      <a-camera>
+        <a-cursor></a-cursor>
+      </a-camera>
+    </a-entity>
+    <!-- <a-box color="#0088FF" rotation= "90 130 90" sound="src: #noise"
+    play-sound-on-event="mode: toggle-stop; event: click" event-set__enter="_event: mouseenter; color: #8FF7FF"
+    event-set__leave="_event: mouseleave; color: #4CC3D9"></a-box> -->
+    <a-entity geometry="primitive: sphere; radius: 1"
+          
+          color="green"
+          material="opacity: 0.2; transparent: true"
+          position="3 -1.3 -4" sound="src: #bark"
+          play-sound-on-event="mode: toggle-stop; event: mouseenter" event-set__enter="_event: mouseenter; color: #8FF7FF"
+          event-set__leave="_event: mouseleave; color: #4CC3D9"></a-entity>
+    <a-entity geometry="primitive: sphere; radius: .7"
+          color="green"
+          material="opacity: 0.4; transparent: true"
+          position="5 1 -4" sound="src: #train"
+          play-sound-on-event="mode: toggle-stop; event: mouseenter" event-set__enter="_event: mouseenter; color: #8FF7FF"
+          event-set__leave="_event: mouseleave; color: #4CC3D9"></a-entity>
+    <a-entity geometry="primitive: sphere; radius: .9"
+          color="green"
+          material="opacity: 0.5; transparent: true"
+          position="-13 -2 -4" sound="src: #flute"
+          play-sound-on-event="mode: toggle-stop; event: mouseenter" event-set__enter="_event: mouseenter; color: #8FF7FF"
+          event-set__leave="_event: mouseleave; color: #4CC3D9"></a-entity>
+    <!-- <a-entity geometry="primitive: sphere; radius: 1.2"
+          color="green"
+          material="opacity: 0.3; transparent: true"
+          position="-60 4 12" sound="src: #swings"
+          play-sound-on-event="mode: toggle-stop; event: mouseenter" event-set__enter="_event: mouseenter; color: #8FF7FF"
+          event-set__leave="_event: mouseleave; color: #4CC3D9"></a-entity> -->
+    <a-entity geometry="primitive: sphere; radius: 3"
+          color="green"
+          material="opacity: 0.4; transparent: true"
+          position="50 -5 48" sound="src: #bike"
+          play-sound-on-event="mode: toggle-stop; event: mouseenter" event-set__enter="_event: mouseenter; color: #8FF7FF"
+          event-set__leave="_event: mouseleave; color: #4CC3D9"></a-entity>
+  </a-scene>
+<script type="text/javascript" src="bundle.js"></script></body>
   </body>
   </html>
-  
+ 
