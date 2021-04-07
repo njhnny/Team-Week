@@ -58,6 +58,7 @@ birdsPlayButton.addEventListener('click', function() {
   if (this.dataset.playing === 'false') {
     birdsAudioElement.play();
     this.dataset.playing = 'true';
+    birdsAudioElement.loop ='true';
   } else if (this.dataset.playing === 'true') {
     birdsAudioElement.pause();
     this.dataset.playing = 'false';
@@ -76,6 +77,7 @@ peoplePlayButton.addEventListener('click', function() {
   if (this.dataset.playing === 'false') {
     peopleAudioElement.play();
     this.dataset.playing = 'true';
+    peopleAudioElement.loop ='true';
   } else if (this.dataset.playing === 'true') {
     peopleAudioElement.pause();
     this.dataset.playing = 'false';
