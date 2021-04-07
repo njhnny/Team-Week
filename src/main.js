@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import './assets/audio/restaurant.mp3';
 import './assets/audio/bell.mp3';
+import './assets/audio/bark.mp3';
+import './assets/audio/flute4.mp3';
 import './assets/audio/forest1.mp3';
 import './assets/audio/forest1.ogg';
 import './assets/images/bluffs360.jpg';
