@@ -28,7 +28,6 @@
     <button data-playing="false" role="switch" aria-checked="false" id="people-button" class="play-sound btn btn-primary">
       <span>chatter</span>
     </button>
-    <audio src="assets/audio/forest1.ogg"></audio>
     <br>
     <label for="volume">Volume</label>
     <input type="range" id="volume" min="0" max="2" value="1" step="0.01">
@@ -39,9 +38,11 @@
   <a-scene>
     <a-assets>
       <img id="texture" src="assets/images/boom.jpeg">
-      <audio id="bell"  src="assets/audio/bell.mp3" preload="auto"></audio>
+      <audio id="train"  src="assets/audio/train23.mp3" preload="auto"></audio>
       <audio id="bark"  src="assets/audio/bark.mp3" preload="auto"></audio>
       <audio id="flute" src="assets/audio/flute4.mp3" preload="auto"></audio>
+      <audio id="swings" src="assets/audio/swings7.mp3" preload="auto"></audio>
+      <audio id="bike"  src="assets/audio/bike4.mp3" preload="auto"></audio>
       <!-- <a-asset-item response-type="arraybuffer" id="noise" crossorigin="anonymous" src="assets/audio/assets/audio/birds.mp3"></a-asset-item> -->
     </a-assets>
     
@@ -64,13 +65,25 @@
     <a-entity geometry="primitive: sphere; radius: .7"
           color="green"
           material="opacity: 0.4; transparent: true"
-          position="5 1 -4" sound="src: #bell"
+          position="5 1 -4" sound="src: #train"
           play-sound-on-event="mode: toggle-stop; event: mouseenter" event-set__enter="_event: mouseenter; color: #8FF7FF"
           event-set__leave="_event: mouseleave; color: #4CC3D9"></a-entity>
     <a-entity geometry="primitive: sphere; radius: .9"
           color="green"
           material="opacity: 0.5; transparent: true"
           position="-13 -2 -4" sound="src: #flute"
+          play-sound-on-event="mode: toggle-stop; event: mouseenter" event-set__enter="_event: mouseenter; color: #8FF7FF"
+          event-set__leave="_event: mouseleave; color: #4CC3D9"></a-entity>
+    <!-- <a-entity geometry="primitive: sphere; radius: 1.2"
+          color="green"
+          material="opacity: 0.3; transparent: true"
+          position="-60 4 12" sound="src: #swings"
+          play-sound-on-event="mode: toggle-stop; event: mouseenter" event-set__enter="_event: mouseenter; color: #8FF7FF"
+          event-set__leave="_event: mouseleave; color: #4CC3D9"></a-entity> -->
+    <a-entity geometry="primitive: sphere; radius: 3"
+          color="green"
+          material="opacity: 0.4; transparent: true"
+          position="50 -5 48" sound="src: #bike"
           play-sound-on-event="mode: toggle-stop; event: mouseenter" event-set__enter="_event: mouseenter; color: #8FF7FF"
           event-set__leave="_event: mouseleave; color: #4CC3D9"></a-entity>
   </a-scene>
