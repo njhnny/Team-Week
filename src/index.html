@@ -1,41 +1,57 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<head>
-  <title>Public Space Simulator</title>
-</head>
-<body>
-  <div class="splash">
-    <h1 class="fadeIn">An Evening at The Bluffs</h1>
-    <p class="fadeIn"><i>An immersive audio-visual experience</i></p>
-    <p class="fadeIn">Created by: HR Williams, Nick Hennessy, Tyler Sinks, Garrett Brown</p>
-  </div>
-  <div class="container" id="box">
-    <h2>toggle sounds</h2>
-    <audio id="audio-birds">
-      <source src="assets/audio/birds.mp3" type="audio/mp3"></source>
-      Your browser does not support the audio element.
-    </audio>
-    <button data-playing="false" role="switch" aria-checked="false" id="birds-button" class="play-sound btn btn-primary">
-      <span>birds</span>
-    </button>
-    <audio id="audio-people">
-      <source src="assets/audio/people.mp3" type="audio/mp3"></source>
-      Your browser does not support the audio element.
-    </audio>
-    <button data-playing="false" role="switch" aria-checked="false" id="people-button" class="play-sound btn btn-primary">
-      <span>chatter</span>
-    </button>
-    <audio src="assets/audio/forest1.ogg"></audio>
-    <br>
-    <label for="volume">Volume</label>
-    <input type="range" id="volume" min="0" max="2" value="1" step="0.01">
-    <br>
-    <label for="panner">Pan</label>
-    <input type="range" id="panner" min="-3" max="3" value="0" step="0.01">
-  </div>
-  <script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>
-  <a-scene >
-    <a-sky id="360" src="assets/images/bluffs360.jpg" rotation="0 -150 0"></a-sky>
-  </a-scene>
-</body>
-</html>
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>Public Space Simulator</title>
+  </head>
+  <!-- <body>
+    <div class="splash">
+      <h1 class="fadeIn">An Evening at The Bluffs</h1>
+      <p class="fadeIn"><i>An immersive audio-visual experience</i></p>
+      <p class="fadeIn">Created by: HR Williams, Nick Hennessy, Tyler Sinks, Garrett Brown</p>
+    </div> -->
+    <div class="container" id="box">
+      <div>
+        <audio id="audio-birds">
+          <source src="assets/audio/birds.mp3" type="audio/mp3"></source>
+          Your browser does not support the audio element.
+        </audio>
+        <div class='btn' role = "button" data-playing="false" role="switch" aria-checked="false" id="fake-button" class="play-sound"> 
+          <p style="font-size:48px">&#128038;</p>
+        </div>
+        <label for="volume">Volume</label>
+        <input type="range" id="volume" min="0" max="100" value="1" step="0.01">
+        <label for="panner">Pan</label>
+        <input type="range" id="panner" min="-3" max="3" value="0" step="0.01">
+      </div>
+      <div>
+        <audio id="audio-people">
+          <source src="assets/audio/people.mp3" type="audio/mp3"></source>
+          Your browser does not support the audio element.
+        </audio>
+        <div class='btn' role="button" data-playing="false" role="switch" aria-checked="false" id="emoji-people-button" class="play-sound">
+          <p style="font-size:48px">&#128483;</p>
+        </div>
+        <label for="other-volumelabel">Volume</label>
+        <input type="range" id="other-volume" min="0" max="100" value="1" step="0.01">
+        <label for="people-panner">Pan</label>
+        <input type="range" id="people-panner" min="-3" max="3" value="0" step="0.01">
+      </div>
+      <!-- <div id=tarot>
+         <audio id="audio-tarot-actually-birds">
+          <source src="assets/audio/birds.mp3" type="audio/mp3"></source>
+          Your browser does not support the audio element.
+        </audio> -->
+        <!-- <div class='btn' role = "button" data-playing="false" role="switch" aria-checked="false" id="fake-tarot-button" class="play-sound"> 
+          <p style="font-size:48px">&#127183;</p>
+        </div>
+      </div> -->
+    </div>
+    <script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>
+    <a-scene >
+      <a-sky id="360" src="assets/images/bluffs360.jpg" rotation="0 -150 0"></a-sky>
+    </a-scene>
+  </body>
+  </html>
+  

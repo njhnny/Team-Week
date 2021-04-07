@@ -12,13 +12,13 @@ import './assets/audio/ogg/birds.ogg';
 import './assets/audio/ogg/people.ogg';
 import './assets/images/bluffs360.jpg';
 
-const splash = document.querySelector('.splash');
+// const splash = document.querySelector('.splash');
 
-document.addEventListener('DOMContentLoaded', (e)=>{
-  setTimeout(()=>{
-    splash.classList.add('display-none');
-  }, 2000);
-});
+// document.addEventListener('DOMContentLoaded', (e)=>{
+//   setTimeout(()=>{
+//     splash.classList.add('display-none');
+//   }, 2000);
+// });
 
 // for legacy browsers
 const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -28,17 +28,24 @@ const audioContext = new AudioContext();
 // get the audio elements
 const birdsAudioElement = document.querySelector('audio#audio-birds');
 const peopleAudioElement = document.querySelector('audio#audio-people');
+// const tarotAudioElement = document.querySelector('audio#audio-tarot-actually-birds');
 
 // pass it into the audio context
 const birdsTrack = audioContext.createMediaElementSource(birdsAudioElement);
 const peopleTrack = audioContext.createMediaElementSource(peopleAudioElement);
+// const tarotTrack = audioContext.createMediaElementSource(tarotAudioElement)
+
 
 birdsTrack.connect(audioContext.destination);
 peopleTrack.connect(audioContext.destination);
+// tarotTrack.connect(audioContext.destination);
+
 
 // select our play button
-const birdsPlayButton = document.querySelector('button#birds-button');
-const peoplePlayButton = document.querySelector('button#people-button');
+const birdsPlayButton = document.querySelector('div.btn');
+const peoplePlayButton = document.querySelector('div#emoji-people-button');
+// const tarotPlayButton = document.querySelector('div#fake-tarot-button');
+
 
 birdsPlayButton.addEventListener('click', function() {
 
@@ -76,94 +83,66 @@ peoplePlayButton.addEventListener('click', function() {
 
 }, false);
 
-birdsAudioElement.addEventListener('ended', () => {
-  birdsPlayButton.dataset.playing = 'false';
-  peoplePlayButton.dataset.playing = 'false';
-  // bellPlayButton.dataset.playing = 'false';
-  // forest1PlayButton.dataset.playing = 'false';
-}, false);
+// tarotPlayButton.addEventListener('click', function() {
 
-const birdsGainNode = audioContext.createGain();
-// const peopleGainNode = audioContext.createGain()
+  // check if context is in suspended state (autoplay policy)
+  // if (audioContext.state === 'suspended') {
+  //   audioContext.resume();
+  // }
 
-const birdsVolumeControl = document.querySelector('#volume');
-
-birdsVolumeControl.addEventListener('input', function() {
-  birdsGainNode.gain.value = this.value;
-}, false);
-
-const pannerOptions = { pan: 0 };
-const panner = new StereoPannerNode(audioContext, pannerOptions);
-
-const pannerControl = document.querySelector('#panner');
-
-pannerControl.addEventListener('input', function() {
-  panner.pan.value = this.value;
-}, false);
-
-peopleTrack.connect(birdsGainNode).connect(panner).connect(audioContext.destination);
-birdsTrack.connect(birdsGainNode).connect(panner).connect(audioContext.destination);
-/*
-
-bell.mp3
-
-*/
-
-// const forestAudioContext = new AudioContext();
-
-// // get the audio element
-// const forestAudioElement = document.querySelector('audio#forest1mp3-src');
-
-// // pass it into the audio context
-// const forestTrack = forestAudioContext.createMediaElementSource(forestAudioElement);
-
-// forestTrack.connect(forestAudioContext.destination);
-
-// // select our play button
-// const forestPlayButton = document.querySelector('button#forest-mp3');
-
-// forestPlayButton.addEventListener('click', function() {
-
-//   // check if context is in suspended state (autoplay policy)
-//   if (forestAudioContext.state === 'suspended') {
-//     forestAudioContext.resume();
-//   }
-
-//   // play or pause track depending on state
+  // play or pause track depending on state
 //   if (this.dataset.playing === 'false') {
-//     forestAudioElement.play();
+//     tarotAudioElement.play();
 //     this.dataset.playing = 'true';
 //   } else if (this.dataset.playing === 'true') {
-//     forestAudioElement.pause();
+//     tarotAudioElement.pause();
 //     this.dataset.playing = 'false';
 //   }
 
 // }, false);
 
-// forestAudioElement.addEventListener('ended', () => {
-//   forestPlayButton.dataset.playing = 'false';
-// }, false);
+birdsAudioElement.addEventListener('ended', () => {
+  birdsPlayButton.dataset.playing = 'false';
+}, false);
+peopleAudioElement.addEventListener('ended', () => {
+  peoplePlayButton.dataset.playing = 'false';
+}, false);
 
-// const forestGainNode = audioContext.createGain();
+const birdsGainNode = audioContext.createGain();
+const peopleGainNode = audioContext.createGain();
 
-// const forestVolumeControl = document.querySelector('#volume');
+const birdsVolumeControl = document.querySelector('#volume');
+const peopleVolumeControl = document.querySelector('#other-volume');
 
-// forestVolumeControl.addEventListener('input', function() {
-//   forestGainNode.gain.value = this.value;
-// }, false);
+birdsVolumeControl.addEventListener('input', function() {
+  birdsGainNode.gain.value = this.value;
+}, false);
+peopleVolumeControl.addEventListener('input', function() {
+  peopleGainNode.gain.value = this.value;
+}, false);
 
-// const forestPannerOptions = { pan: 0 };
-// const forestPanner = new StereoPannerNode(forestAudioContext, forestPannerOptions);
 
-// const forestPannerControl = document.querySelector('#panner');
+const pannerOptions = { pan: 0 };
+const panner = new StereoPannerNode(audioContext, pannerOptions);
+const peoplePannerOptions = { pan: 0 };
+const peoplePanner = new StereoPannerNode(audioContext, peoplePannerOptions);
 
-// forestPannerControl.addEventListener('input', function() {
-//   forestPanner.pan.value = this.value;
-// }, false);
+const pannerControl = document.querySelector('#panner');
+const peoplePannerControl = document.querySelector('#people-panner');
 
-// forestTrack.connect(gainNode).connect(panner).connect(audioContext.destination);
+pannerControl.addEventListener('input', function() {
+  panner.pan.value = this.value;
+}, false);
 
-// forestTrack.connect(forestAudioContext.destination);
+peoplePannerControl.addEventListener('input', function() {
+  peoplePanner.pan.value = this.value;
+}, false);
+
+peopleTrack.connect(peopleGainNode).connect(peoplePanner).connect(audioContext.destination);
+birdsTrack.connect(birdsGainNode).connect(panner).connect(audioContext.destination);
+// tarotTrack.connect(audioContext.destination);
+
+
 
 //window.addEventListener('load', onVrViewLoad);
 
@@ -241,3 +220,4 @@ bell.mp3
 //   coneOuterAngle: outerCone,
 //   coneOuterGain: outerGain
 // })
+
