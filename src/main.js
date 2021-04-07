@@ -12,13 +12,13 @@ import './assets/audio/ogg/birds.ogg';
 import './assets/audio/ogg/people.ogg';
 import './assets/images/bluffs360.jpg';
 
-const splash = document.querySelector('.splash');
+// const splash = document.querySelector('.splash');
 
-document.addEventListener('DOMContentLoaded', (e)=>{
-  setTimeout(()=>{
-    splash.classList.add('display-none');
-  }, 2000);
-});
+// document.addEventListener('DOMContentLoaded', (e)=>{
+//   setTimeout(()=>{
+//     splash.classList.add('display-none');
+//   }, 2000);
+// });
 
 // for legacy browsers
 const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -28,23 +28,23 @@ const audioContext = new AudioContext();
 // get the audio elements
 const birdsAudioElement = document.querySelector('audio#audio-birds');
 const peopleAudioElement = document.querySelector('audio#audio-people');
-const tarotAudioElement = document.querySelector('audio#audio-tarot-actually-birds');
+// const tarotAudioElement = document.querySelector('audio#audio-tarot-actually-birds');
 
 // pass it into the audio context
 const birdsTrack = audioContext.createMediaElementSource(birdsAudioElement);
 const peopleTrack = audioContext.createMediaElementSource(peopleAudioElement);
-const tarotTrack = audioContext.createMediaElementSource(tarotAudioElement)
+// const tarotTrack = audioContext.createMediaElementSource(tarotAudioElement)
 
 
 birdsTrack.connect(audioContext.destination);
 peopleTrack.connect(audioContext.destination);
-tarotTrack.connect(audioContext.destination);
+// tarotTrack.connect(audioContext.destination);
 
 
 // select our play button
 const birdsPlayButton = document.querySelector('div.btn');
-const peoplePlayButton = document.querySelector('button#people-button');
-const tarotPlayButton = document.querySelector('div#fake-tarot-button');
+const peoplePlayButton = document.querySelector('div#emoji-people-button');
+// const tarotPlayButton = document.querySelector('div#fake-tarot-button');
 
 
 birdsPlayButton.addEventListener('click', function() {
@@ -83,23 +83,23 @@ peoplePlayButton.addEventListener('click', function() {
 
 }, false);
 
-tarotPlayButton.addEventListener('click', function() {
+// tarotPlayButton.addEventListener('click', function() {
 
   // check if context is in suspended state (autoplay policy)
-  if (audioContext.state === 'suspended') {
-    audioContext.resume();
-  }
+  // if (audioContext.state === 'suspended') {
+  //   audioContext.resume();
+  // }
 
   // play or pause track depending on state
-  if (this.dataset.playing === 'false') {
-    tarotAudioElement.play();
-    this.dataset.playing = 'true';
-  } else if (this.dataset.playing === 'true') {
-    tarotAudioElement.pause();
-    this.dataset.playing = 'false';
-  }
+//   if (this.dataset.playing === 'false') {
+//     tarotAudioElement.play();
+//     this.dataset.playing = 'true';
+//   } else if (this.dataset.playing === 'true') {
+//     tarotAudioElement.pause();
+//     this.dataset.playing = 'false';
+//   }
 
-}, false);
+// }, false);
 
 birdsAudioElement.addEventListener('ended', () => {
   birdsPlayButton.dataset.playing = 'false';
@@ -140,7 +140,7 @@ peoplePannerControl.addEventListener('input', function() {
 
 peopleTrack.connect(peopleGainNode).connect(peoplePanner).connect(audioContext.destination);
 birdsTrack.connect(birdsGainNode).connect(panner).connect(audioContext.destination);
-tarotTrack.connect(audioContext.destination);
+// tarotTrack.connect(audioContext.destination);
 
 
 
@@ -220,3 +220,4 @@ tarotTrack.connect(audioContext.destination);
 //   coneOuterAngle: outerCone,
 //   coneOuterGain: outerGain
 // })
+
