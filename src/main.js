@@ -14,13 +14,14 @@ import './assets/audio/ogg/birds.ogg';
 import './assets/audio/ogg/people.ogg';
 import './assets/images/bluffs360.jpg';
 
-// const splash = document.querySelector('.splash');
-
-// document.addEventListener('DOMContentLoaded', (e)=>{
-//   setTimeout(()=>{
-//     splash.classList.add('display-none');
-//   }, 2000);
-// });
+const splash = document.querySelector('.splash');
+/* jshint ignore:start*/
+document.addEventListener('DOMContentLoaded', (e)=>{
+/* jshint ignore:end */
+  setTimeout(()=>{
+    splash.classList.add('display-none');
+  }, 2000);
+});
 
 
 
