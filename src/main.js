@@ -46,7 +46,6 @@ peopleTrack.connect(audioContext.destination);
 
 // select our play button
 
-const playButton = document.querySelector('#api');
 const birdsPlayButton = document.querySelector('div.btn');
 const peoplePlayButton = document.querySelector('div#emoji-people-button');
 
